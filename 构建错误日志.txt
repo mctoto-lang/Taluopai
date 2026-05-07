@@ -1,0 +1,486 @@
+root@VM-0-10-ubuntu:/opt/1panel/www/opt/Taluopai# docker build -t taluopai:latest .
+[+] Building 7.2s (16/23)                                                                                       docker:default
+ => [internal] load build definition from Dockerfile                                                                      0.0s
+ => => transferring dockerfile: 2.07kB                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                         0.8s
+ => [internal] load .dockerignore                                                                                         0.0s
+ => => transferring context: 998B                                                                                         0.0s
+ => [internal] load build context                                                                                         0.0s
+ => => transferring context: 5.09kB                                                                                       0.0s
+ => [deps 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f60937  0.0s
+ => CACHED [deps 2/6] RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories                    0.0s
+ => CACHED [builder 3/7] WORKDIR /app                                                                                     0.0s
+ => CACHED [runner  4/11] RUN addgroup --system --gid 1001 nodejs                                                         0.0s
+ => CACHED [runner  5/11] RUN adduser --system --uid 1001 nextjs                                                          0.0s
+ => CACHED [deps 3/6] RUN apk add --no-cache libc6-compat                                                                 0.0s
+ => CACHED [deps 4/6] WORKDIR /app                                                                                        0.0s
+ => CACHED [deps 5/6] COPY package.json package-lock.json* ./                                                             0.0s
+ => CACHED [deps 6/6] RUN npm config set registry https://registry.npmmirror.com &&     npm ci --legacy-peer-deps         0.0s
+ => CACHED [builder 4/7] COPY --from=deps /app/node_modules ./node_modules                                                0.0s
+ => CACHED [builder 5/7] COPY . .                                                                                         0.0s
+ => ERROR [builder 6/7] RUN npm config set registry https://registry.npmmirror.com &&     npm run build                   6.3s
+------                                                                                                                         
+ > [builder 6/7] RUN npm config set registry https://registry.npmmirror.com &&     npm run build:                              
+0.910                                                                                                                          
+0.910 > nextjs_tailwind_shadcn_ts@0.2.0 build                                                                                  
+0.910 > next build                                                                                                             
+0.910 
+1.481 ▲ Next.js 16.2.5 (Turbopack)
+1.481 - Experiments (use with caution):
+1.481   · serverActions
+1.482 
+1.512   Creating an optimized production build ...
+6.220 
+6.221 > Build error occurred
+6.231 Error: Turbopack build failed with 18 errors:
+6.231 ./src/app/page.tsx:12:1
+6.231 Module not found: Can't resolve '@/components/card-grid'
+6.231   10 |
+6.231   11 | import { Navigation } from '@/components/navigation';
+6.231 > 12 | import { CardGrid } from '@/components/card-grid';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   13 | import { ImageUploadDialog } from '@/components/image-upload-dialog';
+6.231   14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231   15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:19:1
+6.231 Module not found: Can't resolve '@/components/card-template-dialog'
+6.231   17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231   18 | import { ExportValidationDialog } from '@/components/export-validation-dialog';
+6.231 > 19 | import { CardTemplateDialog } from '@/components/card-template-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   20 |
+6.231   21 | import { Sparkles, Info } from 'lucide-react';
+6.231   22 |
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:17:1
+6.231 Module not found: Can't resolve '@/components/export-progress-dialog'
+6.231   15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231   16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231 > 17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   18 | import { ExportValidationDialog } from '@/components/export-validation-dialog';
+6.231   19 | import { CardTemplateDialog } from '@/components/card-template-dialog';
+6.231   20 |
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:18:1
+6.231 Module not found: Can't resolve '@/components/export-validation-dialog'
+6.231   16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231   17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231 > 18 | import { ExportValidationDialog } from '@/components/export-validation-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   19 | import { CardTemplateDialog } from '@/components/card-template-dialog';
+6.231   20 |
+6.231   21 | import { Sparkles, Info } from 'lucide-react';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:16:1
+6.231 Module not found: Can't resolve '@/components/image-selector-dialog'
+6.231   14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231   15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231 > 16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231   18 | import { ExportValidationDialog } from '@/components/export-validation-dialog';
+6.231   19 | import { CardTemplateDialog } from '@/components/card-template-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:13:1
+6.231 Module not found: Can't resolve '@/components/image-upload-dialog'
+6.231   11 | import { Navigation } from '@/components/navigation';
+6.231   12 | import { CardGrid } from '@/components/card-grid';
+6.231 > 13 | import { ImageUploadDialog } from '@/components/image-upload-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231   15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231   16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:11:1
+6.231 Module not found: Can't resolve '@/components/navigation'
+6.231    9 | import { exportAllCards } from '@/lib/image-processor';
+6.231   10 |
+6.231 > 11 | import { Navigation } from '@/components/navigation';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   12 | import { CardGrid } from '@/components/card-grid';
+6.231   13 | import { ImageUploadDialog } from '@/components/image-upload-dialog';
+6.231   14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:15:1
+6.231 Module not found: Can't resolve '@/components/settings-dialog'
+6.231   13 | import { ImageUploadDialog } from '@/components/image-upload-dialog';
+6.231   14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231 > 15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231   17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231   18 | import { ExportValidationDialog } from '@/components/export-validation-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:14:1
+6.231 Module not found: Can't resolve '@/components/template-manager-dialog'
+6.231   12 | import { CardGrid } from '@/components/card-grid';
+6.231   13 | import { ImageUploadDialog } from '@/components/image-upload-dialog';
+6.231 > 14 | import { TemplateManagerDialog } from '@/components/template-manager-dialog';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   15 | import { SettingsDialog } from '@/components/settings-dialog';
+6.231   16 | import { ImageSelectorDialog } from '@/components/image-selector-dialog';
+6.231   17 | import { ExportProgressDialog } from '@/components/export-progress-dialog';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/layout.tsx:4:1
+6.231 Module not found: Can't resolve '@/components/ui/toaster'
+6.231   2 | import { Geist, Geist_Mono } from "next/font/google";
+6.231   3 | import "./globals.css";
+6.231 > 4 | import { Toaster } from "@/components/ui/toaster";
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   5 | import { TooltipProvider } from "@/components/ui/tooltip";
+6.231   6 |
+6.231   7 | const geistSans = Geist({
+6.231 
+6.231 
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/layout.tsx:5:1
+6.231 Module not found: Can't resolve '@/components/ui/tooltip'
+6.231   3 | import "./globals.css";
+6.231   4 | import { Toaster } from "@/components/ui/toaster";
+6.231 > 5 | import { TooltipProvider } from "@/components/ui/tooltip";
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   6 |
+6.231   7 | const geistSans = Geist({
+6.231   8 |   variable: "--font-geist-sans",
+6.231 
+6.231 
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:8:1
+6.231 Module not found: Can't resolve '@/hooks/use-toast'
+6.231    6 | import { POKER_CARDS } from '@/lib/poker-data';
+6.231    7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231 >  8 | import { useToast } from '@/hooks/use-toast';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231    9 | import { exportAllCards } from '@/lib/image-processor';
+6.231   10 |
+6.231   11 | import { Navigation } from '@/components/navigation';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/api/card-templates/file/[filename]/route.ts:4:1
+6.231 Module not found: Can't resolve '@/lib/cos-config'
+6.231   2 | import { promises as fs } from 'fs';
+6.231   3 | import path from 'path';
+6.231 > 4 | import { isCosUrl } from '@/lib/cos-config';
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   5 |
+6.231   6 | const UPLOAD_DIR = path.join(process.cwd(), 'upload', 'card-templates');
+6.231   7 | const META_FILE = path.join(UPLOAD_DIR, 'metadata.json');
+6.231 
+6.231 
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:9:1
+6.231 Module not found: Can't resolve '@/lib/image-processor'
+6.231    7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231    8 | import { useToast } from '@/hooks/use-toast';
+6.231 >  9 | import { exportAllCards } from '@/lib/image-processor';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   10 |
+6.231   11 | import { Navigation } from '@/components/navigation';
+6.231   12 | import { CardGrid } from '@/components/card-grid';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:6:1
+6.231 Module not found: Can't resolve '@/lib/poker-data'
+6.231   4 | import { useAppStore } from '@/lib/store';
+6.231   5 | import { TAROT_CARDS } from '@/lib/tarot-data';
+6.231 > 6 | import { POKER_CARDS } from '@/lib/poker-data';
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231   8 | import { useToast } from '@/hooks/use-toast';
+6.231   9 | import { exportAllCards } from '@/lib/image-processor';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:4:1
+6.231 Module not found: Can't resolve '@/lib/store'
+6.231   2 |
+6.231   3 | import React, { useState, useCallback, useMemo } from 'react';
+6.231 > 4 | import { useAppStore } from '@/lib/store';
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   5 | import { TAROT_CARDS } from '@/lib/tarot-data';
+6.231   6 | import { POKER_CARDS } from '@/lib/poker-data';
+6.231   7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:5:1
+6.231 Module not found: Can't resolve '@/lib/tarot-data'
+6.231   3 | import React, { useState, useCallback, useMemo } from 'react';
+6.231   4 | import { useAppStore } from '@/lib/store';
+6.231 > 5 | import { TAROT_CARDS } from '@/lib/tarot-data';
+6.231     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231   6 | import { POKER_CARDS } from '@/lib/poker-data';
+6.231   7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231   8 | import { useToast } from '@/hooks/use-toast';
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231 ./src/app/page.tsx:7:1
+6.231 Module not found: Can't resolve '@/lib/workspace-config'
+6.231    5 | import { TAROT_CARDS } from '@/lib/tarot-data';
+6.231    6 | import { POKER_CARDS } from '@/lib/poker-data';
+6.231 >  7 | import { getWorkspaceConfig } from '@/lib/workspace-config';
+6.231      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6.231    8 | import { useToast } from '@/hooks/use-toast';
+6.231    9 | import { exportAllCards } from '@/lib/image-processor';
+6.231   10 |
+6.231 
+6.231 
+6.231 
+6.231 Import traces:
+6.231   Client Component Browser:
+6.231     ./src/app/page.tsx [Client Component Browser]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231   Client Component SSR:
+6.231     ./src/app/page.tsx [Client Component SSR]
+6.231     ./src/app/page.tsx [Server Component]
+6.231 
+6.231 https://nextjs.org/docs/messages/module-not-found
+6.231 
+6.231 
+6.231     at <unknown> (./src/app/page.tsx:12:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:19:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:17:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:18:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:16:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:13:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:11:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:15:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:14:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/layout.tsx:4:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/layout.tsx:5:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:8:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/api/card-templates/file/[filename]/route.ts:4:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:9:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:6:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:4:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:5:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+6.231     at <unknown> (./src/app/page.tsx:7:1)
+6.231     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+------
+Dockerfile:31
+--------------------
+  30 |     # Build the application with China npm mirror
+  31 | >>> RUN npm config set registry https://registry.npmmirror.com && \
+  32 | >>>     npm run build
+  33 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm config set registry https://registry.npmmirror.com &&     npm run build" did not complete successfully: exit code: 1
+root@VM-0-10-ubuntu:/opt/1panel/www/opt/Taluopai# 

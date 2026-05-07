@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  taluopai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taluopai-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    volumes:
+      # Persist uploaded card templates
+      - ./upload:/app/upload
+      # Persist database
+      - ./db:/app/db
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - taluopai-network
+
+networks:
+  taluopai-network:
+    driver: bridge
