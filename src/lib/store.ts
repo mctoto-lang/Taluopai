@@ -390,7 +390,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   bindAllImages: () => {
     const { cards, uploadedImages } = get();
     const resetImages = uploadedImages.map(img => ({ ...img, isUsed: false }));
-    const resetCards = cards.map(c => ({ ...c, boundImageId: undefined }));
+    const resetCards: TarotCard[] = cards.map(c => ({ ...c, boundImageId: undefined }));
     const sortedImages = [...resetImages].sort((a, b) => {
       const numA = parseInt(a.file.name.replace(/\D/g, '') || '0');
       const numB = parseInt(b.file.name.replace(/\D/g, '') || '0');

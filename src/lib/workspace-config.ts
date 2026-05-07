@@ -1,4 +1,4 @@
-import { WorkMode, CategoryInfo, TarotCard } from '@/types';
+import { WorkMode, CategoryInfo, TarotCard, CardCategory } from '@/types';
 import { TAROT_CATEGORIES, TAROT_CARDS, getCategoryCards as getTarotCardsByCategory } from '@/lib/tarot-data';
 import { POKER_CATEGORIES, POKER_CARDS, getPokerCardsByCategory } from '@/lib/poker-data';
 
@@ -63,5 +63,5 @@ export function getCardsByCategory(category: string, mode: WorkMode): TarotCard[
   if (mode === 'poker') {
     return getPokerCardsByCategory(category);
   }
-  return getTarotCardsByCategory(category);
+  return getTarotCardsByCategory(category as CardCategory);
 }

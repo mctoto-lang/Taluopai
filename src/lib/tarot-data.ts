@@ -1,4 +1,4 @@
-import { TarotCard, CategoryInfo } from '@/types';
+import { TarotCard, CategoryInfo, CardCategory } from '@/types';
 
 export const TAROT_CATEGORIES: CategoryInfo[] = [
   { key: 'major', labelCn: '大阿尔卡纳', labelEn: 'Major Arcana', color: '#FFD700', startId: 1, endId: 22 },

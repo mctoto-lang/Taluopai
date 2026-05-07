@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
       .jpeg({ quality: 90 })
       .toBuffer();
 
-    return new NextResponse(result, {
+    return new NextResponse(new Uint8Array(result), {
       status: 200,
       headers: {
         "Content-Type": "image/jpeg",
