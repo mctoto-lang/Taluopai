@@ -67,7 +67,6 @@ __tests__
 # Development files
 .eslintrc*
 .prettierrc*
-tsconfig.json
 jest.config.*
 playwright.config.*
 
